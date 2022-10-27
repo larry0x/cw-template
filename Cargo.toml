@@ -8,7 +8,7 @@ edition       = "2021"
 license       = "AGPL-v3-or-later"
 homepage      = "https://larry.engineer"
 repository    = "https://github.com/steak-enjoyers/cw-template"
-documentation = "https://github.com/steak-enjoyers/cw-template#README"
+documentation = "https://github.com/steak-enjoyers/cw-template#readme"
 keywords      = ["blockchain", "cosmos", "cosmwasm"]
 rust-version  = "1.64.0"
 
