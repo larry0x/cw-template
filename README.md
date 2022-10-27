@@ -4,7 +4,7 @@ Template for multi-contract [CosmWasm](https://github.com/CosmWasm/cosmwasm) pro
 
 ## How to Use
 
-Install [`cargo-make`](https://sagiegurari.github.io/cargo-make/):
+Install [cargo-make](https://sagiegurari.github.io/cargo-make/):
 
 ```sh
 cargo install --force cargo-make
@@ -34,7 +34,7 @@ Check for unused dependencies:
 cargo make udeps
 ```
 
-Compile all contracts using [`rust-optimizer`](https://github.com/CosmWasm/rust-optimizer):
+Compile all contracts using [rust-optimizer](https://github.com/CosmWasm/rust-optimizer):
 
 ```sh
 cargo make optimize
