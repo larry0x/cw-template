@@ -76,8 +76,8 @@ crates=(
   steak-hub
 )
 
-for crate in $crates; do
-  cargo publish -p $crate --dry-run
+for crate in ${crates[@]}; do
+  cargo publish -p $crate
   echo "💤 sleeping for 30 sec before publishing the next crate..."
   sleep 30
 done
