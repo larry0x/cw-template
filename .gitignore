@@ -1,0 +1,8 @@
+# Rust
+target/
+
+# CosmWasm build artifacts
+artifacts/
+
+# macOS
+.DS_Store

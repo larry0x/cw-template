@@ -1,0 +1,135 @@
+{
+  "contract_name": "steak-hub",
+  "contract_version": "0.0.0",
+  "idl_version": "1.0.0",
+  "instantiate": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "InstantiateMsg",
+    "type": "object",
+    "required": [
+      "owner"
+    ],
+    "properties": {
+      "owner": {
+        "description": "Address of the current contract owner",
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  },
+  "execute": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ExecuteMsg",
+    "oneOf": [
+      {
+        "description": "Propose a transfer of the contract's ownership to another account",
+        "type": "object",
+        "required": [
+          "transfer_ownership"
+        ],
+        "properties": {
+          "transfer_ownership": {
+            "type": "object",
+            "required": [
+              "new_owner"
+            ],
+            "properties": {
+              "new_owner": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      {
+        "description": "Accept the proposed ownership transfer",
+        "type": "object",
+        "required": [
+          "accept_ownership"
+        ],
+        "properties": {
+          "accept_ownership": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    ]
+  },
+  "query": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "QueryMsg",
+    "oneOf": [
+      {
+        "description": "Return contract's configurations",
+        "type": "object",
+        "required": [
+          "config"
+        ],
+        "properties": {
+          "config": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    ]
+  },
+  "migrate": null,
+  "sudo": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "SudoMsg",
+    "oneOf": [
+      {
+        "description": "Forcibly reset the contract's owner. Delete the pending ownership transfer if there is one.",
+        "type": "object",
+        "required": [
+          "set_owner"
+        ],
+        "properties": {
+          "set_owner": {
+            "type": "object",
+            "required": [
+              "new_owner"
+            ],
+            "properties": {
+              "new_owner": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    ]
+  },
+  "responses": {
+    "config": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Config_for_String",
+      "type": "object",
+      "required": [
+        "owner"
+      ],
+      "properties": {
+        "owner": {
+          "description": "Address of the current contract owner",
+          "type": "string"
+        },
+        "pending_owner": {
+          "description": "If there is a pending ownership transfer, the proposed new owner",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
