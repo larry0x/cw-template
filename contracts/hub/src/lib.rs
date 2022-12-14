@@ -1,7 +1,7 @@
 use cosmwasm_std::{
-    entry_point, to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult,
+    entry_point, to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdError, StdResult,
 };
-use cw_ownable::{Ownership, OWNERSHIP};
+use cw_ownable::{Ownership, OwnershipError, OWNERSHIP};
 
 use steak::hub::{ExecuteMsg, InstantiateMsg, QueryMsg};
 
@@ -33,13 +33,13 @@ pub fn execute(
             expiry,
         } => {
             cw_ownable::transfer_ownership(deps, &info.sender, &new_owner, expiry)?;
-        }
+        },
         ExecuteMsg::AcceptOwnership {} => {
             cw_ownable::accept_ownership(deps.storage, &env.block, info.sender)?;
-        }
+        },
         ExecuteMsg::RenounceOwnership {} => {
             cw_ownable::renounce_ownership(deps.storage, &info.sender)?;
-        }
+        },
     }
     Ok(Response::default())
 }
@@ -61,8 +61,8 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
 #[derive(Debug, thiserror::Error)]
 pub enum ContractError {
     #[error("{0}")]
-    Std(#[from] cosmwasm_std::StdError),
+    Std(#[from] StdError),
 
     #[error("{0}")]
-    Ownership(#[from] cw_ownable::OwnershipError),
+    Ownership(#[from] OwnershipError),
 }
