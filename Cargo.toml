@@ -15,9 +15,8 @@ rust-version  = "1.64.0"
 [workspace.dependencies]
 cosmwasm-schema = "1.1"
 cosmwasm-std    = "1.1"
-cw2             = "0.16"
-cw-storage-plus = "0.16"
-steak           = { version = "0.0.0", path = "./packages/steak" }
+cw2             = "1.0"
+cw-ownable      = { path = "/Users/larry/workspace/cw-plus-plus/packages/ownable" }
 thiserror       = "1.0"
 
 [profile.release]
