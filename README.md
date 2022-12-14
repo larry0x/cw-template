@@ -62,4 +62,4 @@ cargo make publish
 
 ## License
 
-Contents of this repository are open source under [GNU Affero General Public License](./LICENSE) v3 or later.
+TBD
