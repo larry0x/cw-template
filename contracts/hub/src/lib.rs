@@ -16,7 +16,7 @@ pub fn instantiate(
     msg: InstantiateMsg,
 ) -> StdResult<Response> {
     cw2::set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
-    cw_ownable::set_owner(deps, &msg.owner)?;
+    cw_ownable::initialize_owner(deps, &msg.owner)?;
     Ok(Response::default())
 }
 
@@ -28,18 +28,9 @@ pub fn execute(
     msg: ExecuteMsg,
 ) -> Result<Response, ContractError> {
     match msg {
-        ExecuteMsg::TransferOwnership {
-            new_owner,
-            expiry,
-        } => {
-            cw_ownable::transfer_ownership(deps, &info.sender, &new_owner, expiry)?;
-        },
-        ExecuteMsg::AcceptOwnership {} => {
-            cw_ownable::accept_ownership(deps.storage, &env.block, info.sender)?;
-        },
-        ExecuteMsg::RenounceOwnership {} => {
-            cw_ownable::renounce_ownership(deps.storage, &info.sender)?;
-        },
+        ExecuteMsg::UpdateOwnership(action) => {
+            cw_ownable::update_ownership(deps, &env.block, &info.sender, action)?;
+        }
     }
     Ok(Response::default())
 }
