@@ -4,5 +4,9 @@ target/
 # CosmWasm build artifacts
 artifacts/
 
+# Editors
+.idea/
+.vscode/
+
 # macOS
 .DS_Store
