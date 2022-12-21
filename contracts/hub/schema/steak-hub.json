@@ -22,67 +22,71 @@
     "title": "ExecuteMsg",
     "oneOf": [
       {
-        "description": "Propose to transfer the contract's ownership to another account, optionally with an expiry time.\n\nCan only be called by the contract's current owner.\n\nAny existing pending ownership transfer is overwritten.",
+        "description": "Update the contract's ownership. The `action` to be provided can be either to propose transferring ownership to an account, accept a pending ownership transfer, or renounce the ownership permanently.",
         "type": "object",
         "required": [
-          "transfer_ownership"
+          "update_ownership"
         ],
         "properties": {
-          "transfer_ownership": {
-            "type": "object",
-            "required": [
-              "new_owner"
-            ],
-            "properties": {
-              "expiry": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Expiration"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "new_owner": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": false
-          }
-        },
-        "additionalProperties": false
-      },
-      {
-        "description": "Accept the pending ownership transfer.\n\nCan only be called by the pending owner.",
-        "type": "object",
-        "required": [
-          "accept_ownership"
-        ],
-        "properties": {
-          "accept_ownership": {
-            "type": "object",
-            "additionalProperties": false
-          }
-        },
-        "additionalProperties": false
-      },
-      {
-        "description": "Give up the contract's ownership and the possibility of appointing a new owner.\n\nCan only be invoked by the contract's current owner.\n\nAny existing pending ownership transfer is canceled.",
-        "type": "object",
-        "required": [
-          "renounce_ownership"
-        ],
-        "properties": {
-          "renounce_ownership": {
-            "type": "object",
-            "additionalProperties": false
+          "update_ownership": {
+            "$ref": "#/definitions/Action"
           }
         },
         "additionalProperties": false
       }
     ],
     "definitions": {
+      "Action": {
+        "description": "Actions that can be taken to alter the contract's ownership",
+        "oneOf": [
+          {
+            "description": "Propose to transfer the contract's ownership to another account, optionally with an expiry time.\n\nCan only be called by the contract's current owner.\n\nAny existing pending ownership transfer is overwritten.",
+            "type": "object",
+            "required": [
+              "transfer_ownership"
+            ],
+            "properties": {
+              "transfer_ownership": {
+                "type": "object",
+                "required": [
+                  "new_owner"
+                ],
+                "properties": {
+                  "expiry": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/Expiration"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "new_owner": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "description": "Accept the pending ownership transfer.\n\nCan only be called by the pending owner.",
+            "type": "string",
+            "enum": [
+              "accept_ownership"
+            ]
+          },
+          {
+            "description": "Give up the contract's ownership and the possibility of appointing a new owner.\n\nCan only be invoked by the contract's current owner.\n\nAny existing pending ownership transfer is canceled.",
+            "type": "string",
+            "enum": [
+              "renounce_ownership"
+            ]
+          }
+        ]
+      },
       "Expiration": {
         "description": "Expiration represents a point in time when some event happens. It can compare with a BlockInfo and will return is_expired() == true once the condition is hit (and for every block in the future)",
         "oneOf": [
@@ -170,6 +174,7 @@
     "ownership": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Ownership_for_String",
+      "description": "The contract's ownership info",
       "type": "object",
       "properties": {
         "owner": {
