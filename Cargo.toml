@@ -16,7 +16,7 @@ rust-version  = "1.64.0"
 cosmwasm-schema = "1.1"
 cosmwasm-std    = "1.1"
 cw2             = "1.0"
-cw-ownable      = "0.2"
+cw-ownable      = "0.3"
 thiserror       = "1.0"
 
 [profile.release]
