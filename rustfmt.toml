@@ -1,3 +1,6 @@
+# docs: https://rust-lang.github.io/rustfmt
+group_imports              = "StdExternalCrate" # nightly feature
+imports_granularity        = "Crate"            # nightly feature
 match_block_trailing_comma = true
-max_width = 100
-use_small_heuristics = "off"
+max_width                  = 100
+use_small_heuristics       = "off"

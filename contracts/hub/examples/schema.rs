@@ -1,5 +1,4 @@
 use cosmwasm_schema::write_api;
-
 use steak::hub;
 
 fn main() {

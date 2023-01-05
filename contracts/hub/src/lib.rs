@@ -2,7 +2,6 @@ use cosmwasm_std::{
     entry_point, to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdError, StdResult,
 };
 use cw_ownable::OwnershipError;
-
 use steak::hub::{ExecuteMsg, InstantiateMsg, QueryMsg};
 
 pub const CONTRACT_NAME: &str = "crates.io:steak-hub";
