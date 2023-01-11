@@ -15,7 +15,7 @@ pub fn instantiate(
     msg: InstantiateMsg,
 ) -> StdResult<Response> {
     cw2::set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
-    cw_ownable::initialize_owner(deps.storage, deps.api, &msg.owner)?;
+    cw_ownable::initialize_owner(deps.storage, deps.api, Some(&msg.owner))?;
     Ok(Response::default())
 }
 

@@ -183,13 +183,23 @@ dependencies = [
 ]
 
 [[package]]
-name = "cw-ownable"
-version = "0.3.0"
+name = "cw-address-like"
+version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6af8128a2c83862868f3d576cadde8c0f56b3845d8cb82d0b15b9a3fdbf23690"
+checksum = "b137a72f7ed4eaf591ec1bba7aedb062cde38ff08086276d8de6e37dc9b98621"
+dependencies = [
+ "cosmwasm-std",
+]
+
+[[package]]
+name = "cw-ownable"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "58c6a1ce872cf90cfa4e70a0f5dc5682dd849697a348f135abd46e6f96c570a3"
 dependencies = [
  "cosmwasm-schema",
  "cosmwasm-std",
+ "cw-address-like",
  "cw-ownable-derive",
  "cw-storage-plus",
  "cw-utils",
@@ -198,9 +208,9 @@ dependencies = [
 
 [[package]]
 name = "cw-ownable-derive"
-version = "0.2.0"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "05415700faa6f47185e9cd30d2ac5d49d872378b3329f07eae80a58c703cb592"
+checksum = "d9a0a02e1188a701d79df78dde6a01f4e3d4adb5f199d6f28a0cc7e72f907c09"
 dependencies = [
  "proc-macro2",
  "quote",
