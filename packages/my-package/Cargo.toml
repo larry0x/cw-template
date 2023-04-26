@@ -1,5 +1,5 @@
 [package]
-name          = "steak"
+name          = "my-package"
 description   = "Description of the package"
 version       = { workspace = true }
 authors       = { workspace = true }

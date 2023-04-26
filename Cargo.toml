@@ -3,14 +3,14 @@ members = ["contracts/*", "packages/*"]
 
 [workspace.package]
 version       = "0.0.0"
-authors       = ["Larry Engineer <gm@larry.engineer>"]
+authors       = ["larry <gm@larry.engineer>"]
 edition       = "2021"
-license       = "UNLICENSED"
+rust-version  = "1.65.0"
+license       = "TBD"
 homepage      = "https://larry.engineer"
 repository    = "https://github.com/steak-enjoyers/cw-template"
 documentation = "https://github.com/steak-enjoyers/cw-template#readme"
 keywords      = ["blockchain", "cosmos", "cosmwasm"]
-rust-version  = "1.65.0"
 
 [workspace.dependencies]
 cosmwasm-schema = "1.2"

@@ -1,5 +1,5 @@
 [package]
-name          = "steak-hub"
+name          = "my-contract"
 description   = "Description of the contract"
 version       = { workspace = true }
 authors       = { workspace = true }
@@ -25,5 +25,5 @@ cosmwasm-schema = { workspace = true }
 cosmwasm-std    = { workspace = true }
 cw2             = { workspace = true }
 cw-ownable      = { workspace = true }
-steak           = { path = "../../packages/steak" }
+my-package      = { path = "../../packages/my-package" }
 thiserror       = { workspace = true }

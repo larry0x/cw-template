@@ -1,4 +1,4 @@
-name: CosmWasm
+name: Wasm
 
 on: push
 
@@ -22,6 +22,6 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --locked --lib --release --target wasm32-unknown-unknown
+          args: --locked --target wasm32-unknown-unknown
         env:
           RUST_BACKTRACE: 1

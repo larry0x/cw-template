@@ -1,4 +1,4 @@
-# Steak
+# my-package
 
 Description of the package
 

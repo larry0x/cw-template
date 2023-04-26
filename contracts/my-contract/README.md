@@ -1,4 +1,4 @@
-# Steak Hub
+# my-contract
 
 Description of the contract
 
